@@ -1,0 +1,26 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED" />
+      <stop offset="0.55" stop-color="#F97316" />
+      <stop offset="1" stop-color="#84CC16" />
+    </linearGradient>
+    <clipPath id="clip">
+      <rect width="180" height="180" rx="37" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#clip)">
+    <rect width="180" height="180" fill="url(#bg)" />
+    <rect x="18" y="18" width="144" height="144" rx="30" fill="rgba(0,0,0,0.55)" />
+
+    <!-- Simplified phone -->
+    <rect x="58" y="36" width="64" height="108" rx="16" stroke="#FAF7FF" stroke-width="10" />
+    <rect x="74" y="52" width="32" height="68" rx="10" fill="rgba(250,247,255,0.12)" />
+    <circle cx="90" cy="132" r="6" fill="#FAF7FF" />
+
+    <!-- Upward profit arrow -->
+    <path d="M64 110 L84 90 L96 102 L120 78" stroke="#84CC16" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M118 78 H138 V98" stroke="#84CC16" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>
