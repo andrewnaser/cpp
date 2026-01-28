@@ -13,16 +13,9 @@ export function PromoPopup() {
   const [userCity, setUserCity] = useState<string>("Your Area")
 
   useEffect(() => {
-    // Check if already on stage 2 (they clicked the first banner before)
-    const stage = sessionStorage.getItem("promo_popup_stage")
-    if (stage === "2") {
-      setBannerStage(2)
-    }
-
-    // Fetch user's city based on IP
+    // Fetch user's city based on IP (cached for performance only)
     const fetchCity = async () => {
       try {
-        // Check if we already have the city cached
         const cachedCity = sessionStorage.getItem("promo_user_city")
         if (cachedCity) {
           setUserCity(cachedCity)
@@ -42,7 +35,7 @@ export function PromoPopup() {
     }
     fetchCity()
 
-    // Show popup after a short delay (feels more natural)
+    // Always show popup after a short delay
     const timer = setTimeout(() => {
       setIsVisible(true)
     }, 1500)
@@ -63,10 +56,9 @@ export function PromoPopup() {
     const url = bannerStage === 1 ? PROMO_URL_1 : PROMO_URL_2
     window.open(url, "_blank", "noopener,noreferrer")
 
-    // If on stage 1, transition to stage 2
+    // If on stage 1, transition to stage 2 (in-memory only, resets on refresh)
     if (bannerStage === 1) {
       setBannerStage(2)
-      sessionStorage.setItem("promo_popup_stage", "2")
     }
   }
 
