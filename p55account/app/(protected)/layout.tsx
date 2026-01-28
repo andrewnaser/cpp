@@ -1,5 +1,6 @@
 import type React from "react"
 import { AppSidebar } from "@/components/app-sidebar"
+import { PromoPopup } from "@/components/promo-popup"
 
 export default function ProtectedLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -8,6 +9,7 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
       <main className="flex-1 ml-64 p-6 lg:p-8">
         {children}
       </main>
+      <PromoPopup />
     </div>
   )
 }
