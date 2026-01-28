@@ -83,19 +83,39 @@ export function PromoPopup() {
   if (bannerStage === 1) {
     return (
       <div className="fixed bottom-6 left-6 z-[100] animate-in slide-in-from-left-5 fade-in duration-500">
+        <style jsx>{`
+          @keyframes subtle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
+          }
+          @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.4), 0 25px 50px -12px rgba(88, 28, 135, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(147, 51, 234, 0.6), 0 25px 50px -12px rgba(88, 28, 135, 0.7); }
+          }
+          @keyframes sparkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+          }
+          .banner-float { animation: subtle-float 3s ease-in-out infinite; }
+          .banner-glow { animation: glow-pulse 2.5s ease-in-out infinite; }
+          .sparkle-1 { animation: sparkle 2s ease-in-out infinite; }
+          .sparkle-2 { animation: sparkle 2s ease-in-out infinite 0.5s; }
+          .sparkle-3 { animation: sparkle 2s ease-in-out infinite 1s; }
+          .sparkle-4 { animation: sparkle 2s ease-in-out infinite 1.5s; }
+        `}</style>
         <button
           onClick={handleBannerClick}
-          className="block group text-left"
+          className="block group text-left banner-float"
         >
-          <div className="relative w-[340px] rounded-2xl overflow-hidden shadow-2xl shadow-purple-900/50 border border-purple-500/30 hover:shadow-purple-700/60 hover:scale-[1.02] transition-all duration-300">
+          <div className="relative w-[340px] rounded-2xl overflow-hidden shadow-2xl shadow-purple-900/50 border border-purple-500/30 hover:shadow-purple-700/60 hover:scale-[1.02] transition-all duration-300 banner-glow">
             {/* Background gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-[#7c3aed] via-[#9333ea] to-[#6d28d9]" />
             
-            {/* Sparkle decorations */}
-            <div className="absolute top-3 right-12 text-white/30 text-lg">✦</div>
-            <div className="absolute top-8 right-8 text-white/20 text-sm">✦</div>
-            <div className="absolute bottom-4 left-4 text-white/20 text-base">✦</div>
-            <div className="absolute bottom-8 right-16 text-white/15 text-xs">✦</div>
+            {/* Sparkle decorations - animated */}
+            <div className="absolute top-3 right-12 text-white/30 text-lg sparkle-1">✦</div>
+            <div className="absolute top-8 right-8 text-white/20 text-sm sparkle-2">✦</div>
+            <div className="absolute bottom-4 left-4 text-white/20 text-base sparkle-3">✦</div>
+            <div className="absolute bottom-8 right-16 text-white/15 text-xs sparkle-4">✦</div>
 
             {/* Close button */}
             <div
@@ -139,11 +159,34 @@ export function PromoPopup() {
   // Stage 2: Green gift banner
   return (
     <div className="fixed bottom-6 left-6 z-[100] animate-in slide-in-from-left-5 fade-in duration-500">
+      <style jsx>{`
+        @keyframes subtle-float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-4px); }
+        }
+        @keyframes glow-pulse-green {
+          0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.4), 0 25px 50px -12px rgba(4, 120, 87, 0.5); }
+          50% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.6), 0 25px 50px -12px rgba(4, 120, 87, 0.7); }
+        }
+        @keyframes gift-wiggle {
+          0%, 100% { transform: rotate(0deg); }
+          25% { transform: rotate(-5deg); }
+          75% { transform: rotate(5deg); }
+        }
+        @keyframes text-glow {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.7; }
+        }
+        .banner-float { animation: subtle-float 3s ease-in-out infinite; }
+        .banner-glow-green { animation: glow-pulse-green 2.5s ease-in-out infinite; }
+        .gift-wiggle { animation: gift-wiggle 1.5s ease-in-out infinite; }
+        .cta-pulse { animation: text-glow 1.5s ease-in-out infinite; }
+      `}</style>
       <button
         onClick={handleBannerClick}
-        className="block group text-left"
+        className="block group text-left banner-float"
       >
-        <div className="relative w-[340px] rounded-2xl overflow-hidden shadow-2xl shadow-emerald-900/50 border border-emerald-500/30 hover:shadow-emerald-600/60 hover:scale-[1.02] transition-all duration-300">
+        <div className="relative w-[340px] rounded-2xl overflow-hidden shadow-2xl shadow-emerald-900/50 border border-emerald-500/30 hover:shadow-emerald-600/60 hover:scale-[1.02] transition-all duration-300 banner-glow-green">
           {/* Background gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#059669] via-[#10b981] to-[#047857]" />
 
@@ -158,8 +201,8 @@ export function PromoPopup() {
 
           {/* Content */}
           <div className="relative p-5 flex items-start gap-4">
-            {/* Gift icon */}
-            <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-white/15 flex items-center justify-center shadow-lg border border-white/20">
+            {/* Gift icon - animated */}
+            <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-white/15 flex items-center justify-center shadow-lg border border-white/20 gift-wiggle">
               <Gift className="w-7 h-7 text-white" />
             </div>
 
@@ -176,7 +219,7 @@ export function PromoPopup() {
                 <span className="text-white/80 text-sm">Because You're In</span>
                 <span className="text-white font-bold text-sm">{userCity}</span>
               </div>
-              <p className="text-orange-300 font-bold text-sm">
+              <p className="text-orange-300 font-bold text-sm cta-pulse">
                 Tap here to claim your gift &gt;&gt;
               </p>
             </div>
