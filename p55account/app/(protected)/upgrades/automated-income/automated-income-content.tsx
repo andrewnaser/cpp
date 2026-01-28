@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { ArrowLeft, TrendingUp, CheckCircle2, ExternalLink, Clock, Users, Sparkles } from "lucide-react"
 import Link from "next/link"
-import { VideoPlaceholder } from "@/components/video-placeholder"
 
 interface TrafficSource {
   id: string
@@ -2040,31 +2039,6 @@ export function AutomatedIncomeContent({ userId }: { userId: string }) {
         </div>
       </div>
 
-      <Card className="glass-strong border-emerald-500/30 glow-jade overflow-hidden shadow-2xl">
-        <CardContent className="p-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-            {/* Video Player */}
-            <div className="p-4 bg-black/20">
-              <VideoPlaceholder title="Automated Income Tutorial (Placeholder)" subtitle="Training video will be added here soon." />
-            </div>
-
-            {/* Video Info */}
-            <div className="p-8 flex flex-col justify-center space-y-4 bg-gradient-to-br from-emerald-500/10 to-green-500/10">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-6 h-6 text-emerald-400" />
-                <span className="text-emerald-400 font-black text-sm uppercase tracking-wider">Watch First</span>
-              </div>
-              <div>
-                <h2 className="text-3xl font-black text-white mb-3">How to Use Automated Income</h2>
-                <p className="text-xl text-gray-300 leading-relaxed font-bold">
-                  Watch this quick tutorial to learn how to submit your link to these 100+ traffic sources and get
-                  automated traffic forever!
-                </p>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
 
       {/* Simple Explanation */}
       <Card className="bg-gradient-to-br from-emerald-900/30 to-green-900/30 border-emerald-500/30 shadow-xl">

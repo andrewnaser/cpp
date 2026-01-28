@@ -2,7 +2,6 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Sparkles } from "lucide-react"
-import { VideoPlaceholder } from "@/components/video-placeholder"
 import { APP_NAME } from "@/lib/branding"
 
 export function FeaturedVideoCard() {
@@ -18,12 +17,20 @@ export function FeaturedVideoCard() {
             </div>
             <h3 className="text-3xl font-extrabold text-white mb-2 tracking-tight">Watch This Video To Get Started</h3>
             <p className="text-lg text-[#e9d5ff]/80 font-semibold">
-              Quick orientation training for {APP_NAME} (placeholder for now)
+              Quick orientation training for {APP_NAME}
             </p>
           </div>
 
           {/* Video Player */}
-          <VideoPlaceholder title="Welcome Training (Placeholder)" subtitle="We’ll drop the real starter video here shortly." />
+          <div className="relative aspect-video bg-black">
+            <iframe
+              src="https://player.vimeo.com/video/1159069075?badge=0&autopause=0&player_id=0&app_id=58479"
+              title="Welcome Training"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            />
+          </div>
         </div>
       </CardContent>
     </Card>

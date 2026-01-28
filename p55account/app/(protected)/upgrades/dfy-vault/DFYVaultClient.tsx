@@ -21,7 +21,6 @@ import {
   ExternalLink,
 } from "lucide-react"
 import { fetchDFYLibrary, type DFYVideo } from "@/app/actions/fetch-dfy-library"
-import { VideoPlaceholder } from "@/components/video-placeholder"
 import { APP_NAME } from "@/lib/branding"
 
 interface UserProduct {
@@ -146,8 +145,14 @@ export default function DFYVaultClient() {
           </div>
         </div>
 
-        <div className="p-4">
-          <VideoPlaceholder title="DFY Vault Training (Placeholder)" subtitle="Training video will be added here soon." />
+        <div className="relative aspect-video bg-black">
+          <iframe
+            src="https://player.vimeo.com/video/1159069036?badge=0&autopause=0&player_id=0&app_id=58479"
+            title="DFY Vault Training"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full border-0"
+          />
         </div>
       </Card>
 

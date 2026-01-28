@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useRouter } from "next/navigation"
 import { createPageFromTemplate } from "./actions"
-import { VideoPlaceholder } from "@/components/video-placeholder"
 
 // Note: this upgrade content is still legacy "affiliate article templates" from the original app.
 // We keep the route/structure, but the {APP_NAME} core product is comment packs for YouTube Shorts.
@@ -670,8 +669,14 @@ export function DFYVaultContent() {
       <Card className="glass-strong border-cyan-500/30 glow-cyan overflow-hidden shadow-2xl">
         <CardContent className="p-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-            <div className="p-4 bg-black/20">
-              <VideoPlaceholder title="DFY Vault Tutorial (Placeholder)" subtitle="Training video will be added here soon." />
+            <div className="relative aspect-video bg-black">
+              <iframe
+                src="https://player.vimeo.com/video/1159069036?badge=0&autopause=0&player_id=0&app_id=58479"
+                title="DFY Vault Tutorial"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full border-0"
+              />
             </div>
 
             <div className="p-8 flex flex-col justify-center space-y-4 bg-gradient-to-br from-cyan-500/10 to-blue-500/10">
@@ -690,62 +695,6 @@ export function DFYVaultContent() {
           </div>
         </CardContent>
       </Card>
-
-      <div className="space-y-6">
-        {/* First Exclusive Training Video */}
-        <Card className="glass-strong border-yellow-500/50 glow-yellow overflow-hidden shadow-2xl bg-gradient-to-br from-yellow-500/20 to-orange-500/20">
-          <CardContent className="p-0">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-              <div className="p-4 bg-black/20">
-                <VideoPlaceholder title="Exclusive Training #1 (Placeholder)" subtitle="Training video will be added here soon." />
-              </div>
-
-              <div className="p-8 flex flex-col justify-center space-y-4 bg-gradient-to-br from-yellow-500/10 to-orange-500/10">
-                <div className="flex items-center gap-2">
-                  <Crown className="w-6 h-6 text-yellow-400" />
-                  <span className="text-yellow-400 font-black text-sm uppercase tracking-wider">DFY Exclusive</span>
-                </div>
-                <div>
-                  <h2 className="text-3xl font-black text-white mb-3 leading-tight">
-                    How To Turn A Measly $5 Into $50, $100, And Even $500 Every Single Day...
-                  </h2>
-                  <p className="text-xl text-gray-300 leading-relaxed font-bold">
-                    This exclusive training reveals the exact strategy to multiply small investments into massive daily
-                    profits using the DFY Vault articles.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Second Exclusive Training Video */}
-        <Card className="glass-strong border-yellow-500/50 glow-yellow overflow-hidden shadow-2xl bg-gradient-to-br from-orange-500/20 to-red-500/20">
-          <CardContent className="p-0">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-              <div className="p-4 bg-black/20">
-                <VideoPlaceholder title="Exclusive Training #2 (Placeholder)" subtitle="Training video will be added here soon." />
-              </div>
-
-              <div className="p-8 flex flex-col justify-center space-y-4 bg-gradient-to-br from-orange-500/10 to-red-500/10">
-                <div className="flex items-center gap-2">
-                  <Crown className="w-6 h-6 text-orange-400" />
-                  <span className="text-orange-400 font-black text-sm uppercase tracking-wider">DFY Exclusive</span>
-                </div>
-                <div>
-                  <h2 className="text-3xl font-black text-white mb-3 leading-tight">
-                    How To Hijack Top Publications Traffic In Less Than 9 Minutes, And Turn Them Into $500 Paydays
-                  </h2>
-                  <p className="text-xl text-gray-300 leading-relaxed font-bold">
-                    Discover the secret method to leverage high-traffic publications and convert their audience into
-                    your commission-generating machine.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
 
       <Card className="bg-gray-900/50 border-cyan-500/20 shadow-xl">
         <CardHeader>
