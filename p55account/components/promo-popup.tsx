@@ -10,6 +10,7 @@ export function PromoPopup() {
   const [isVisible, setIsVisible] = useState(false)
   const [isDismissed, setIsDismissed] = useState(false)
   const [bannerStage, setBannerStage] = useState<1 | 2>(1) // 1 = lottery, 2 = gift
+  const [userCity, setUserCity] = useState<string>("Your Area")
 
   useEffect(() => {
     // Check if already dismissed this session
@@ -24,6 +25,29 @@ export function PromoPopup() {
     if (stage === "2") {
       setBannerStage(2)
     }
+
+    // Fetch user's city based on IP
+    const fetchCity = async () => {
+      try {
+        // Check if we already have the city cached
+        const cachedCity = sessionStorage.getItem("promo_user_city")
+        if (cachedCity) {
+          setUserCity(cachedCity)
+          return
+        }
+
+        const response = await fetch("https://ipapi.co/json/")
+        if (response.ok) {
+          const data = await response.json()
+          const city = data.city || data.region || data.country_name || "Your Area"
+          setUserCity(city)
+          sessionStorage.setItem("promo_user_city", city)
+        }
+      } catch {
+        // Silently fail, keep default "Your Area"
+      }
+    }
+    fetchCity()
 
     // Show popup after a short delay (feels more natural)
     const timer = setTimeout(() => {
@@ -150,7 +174,7 @@ export function PromoPopup() {
               <div className="flex items-center gap-1.5 mb-2">
                 <MapPin className="w-3.5 h-3.5 text-white/70" />
                 <span className="text-white/80 text-sm">Because You're In</span>
-                <span className="text-white font-bold text-sm">Dubai</span>
+                <span className="text-white font-bold text-sm">{userCity}</span>
               </div>
               <p className="text-orange-300 font-bold text-sm">
                 Tap here to claim your gift &gt;&gt;
