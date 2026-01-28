@@ -13,14 +13,7 @@ export function PromoPopup() {
   const [userCity, setUserCity] = useState<string>("Your Area")
 
   useEffect(() => {
-    // Check if already dismissed this session
-    const dismissed = sessionStorage.getItem("promo_popup_dismissed")
-    if (dismissed) {
-      setIsDismissed(true)
-      return
-    }
-
-    // Check if already on stage 2
+    // Check if already on stage 2 (they clicked the first banner before)
     const stage = sessionStorage.getItem("promo_popup_stage")
     if (stage === "2") {
       setBannerStage(2)
@@ -62,7 +55,7 @@ export function PromoPopup() {
     e.stopPropagation()
     setIsVisible(false)
     setIsDismissed(true)
-    sessionStorage.setItem("promo_popup_dismissed", "true")
+    // Note: dismissed state is NOT persisted - banner will reappear on refresh/navigation
   }
 
   const handleBannerClick = () => {
